@@ -4,8 +4,6 @@ import java.util.concurrent.Executors
 // this launches 2 coroutines and uses async() and await() to later wait for the results
 
 fun main() {
-
-
     suspend fun task1(): String {
         println("start task1 in Thread ${Thread.currentThread()}")
         yield()

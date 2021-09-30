@@ -4,13 +4,13 @@ import kotlinx.coroutines.*;
 fun main() {
     //The coroutine doesn't stop until all its children are stopped.
     runBlocking {
-        println("Start: ${Thread.currentThread().name}");
+        println("Start 1: ${Thread.currentThread().name}");
 
         launch {
-            println("Start: ${Thread.currentThread().name}");
+            println("Start 2: ${Thread.currentThread().name}");
             myDelay(6000L);
-            println("Exit: ${Thread.currentThread().name}");
+            println("Exit 1: ${Thread.currentThread().name}");
         }
-        println("Exit: ${Thread.currentThread().name}");
+        println("Exit 2: ${Thread.currentThread().name}");
     }
 }

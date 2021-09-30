@@ -7,17 +7,6 @@ import kotlinx.coroutines.yield
 // uses yield() to yield the current coroutine to others to run
 
 fun main() {
-    suspend fun task1() {
-        println("start task1 in Thread ${Thread.currentThread()}")
-        yield()
-        delay(2000)
-        println("end task1 in Thread ${Thread.currentThread()}")
-    }
-    suspend fun task2() {
-        println("start task2 in Thread ${Thread.currentThread()}")
-        yield()
-        println("end task2 in Thread ${Thread.currentThread()}")
-    }
 
     println("start")
 
@@ -28,4 +17,17 @@ fun main() {
     }
 
     println("done")
+}
+
+
+suspend fun task1() {
+    println("start task1 in Thread ${Thread.currentThread()}")
+    yield()
+    delay(2000)
+    println("end task1 in Thread ${Thread.currentThread()}")
+}
+suspend fun task2() {
+    println("start task2 in Thread ${Thread.currentThread()}")
+    yield()
+    println("end task2 in Thread ${Thread.currentThread()}")
 }

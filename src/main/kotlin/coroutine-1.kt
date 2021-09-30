@@ -7,21 +7,23 @@ fun main() {
 
         launch {
             myDelay(5000L);
-            println("hello");
+            println("hello: ${Thread.currentThread().name}");
         }
+        println("hi");
         //Blocks the current thread while waiting for all children to complete.
         runBlocking {
-            println("Start: ${Thread.currentThread().name}");
+            println("Start 1: ${Thread.currentThread().name}");
 
             //The lifetime of the new coroutine is limited only by the lifetime of the whole application.
             val job = launch {
-                println("Start: ${Thread.currentThread().name}");
+                println("Start 2: ${Thread.currentThread().name}");
                 myDelay(6000L);
-                println("Exit: ${Thread.currentThread().name}");
+                println("Exit 1: ${Thread.currentThread().name}");
             }
-            //myDelay(8000L);
+            // myDelay(8000L);
+            job.
             job.join();
-            println("Exit: ${Thread.currentThread().name}");
+            println("Exit 2: ${Thread.currentThread().name}");
         }
 
     }
@@ -29,6 +31,5 @@ fun main() {
 
 //Suspend functions run inside a coroutine only.
 suspend fun myDelay(del:Long) {
-
     delay(del); //blocks the coroutine not the thread.
 }
